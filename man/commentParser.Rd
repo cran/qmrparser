@@ -1,0 +1,61 @@
+%do not edit, edit noweb/qmrparser.nw
+\name{commentParser}
+\alias{commentParser}
+\title{
+  Comment token.
+}
+\description{
+  Recognises a comment, a piece of text delimited by two predefined tokens.
+}
+\usage{
+  
+  commentParser(beginComment,endComment,
+          action = function(s) list(type="commentParser",value=s),
+          error  = function(p) list(type="commentParser",pos  =p))
+
+}
+\arguments{
+  \item{beginComment}{String indicating comment beginning}
+  \item{endComment}{String indicating comment end}
+  \item{action}{Function to be executed if recognition succeeds. Character stream making up the token is passed as parameter to this function}
+
+  \item{error}{Function to be executed if recognition does not succeed. Position of \code{\link[qmrparser]{streamParser}} obtained with \code{\link{streamParserPosition}} is passed as parameter to this function}  
+}
+\details{
+  Characters preceded by \ are not considered as part of beginning of comment end.
+}  
+\value{
+  Anonymous function, returning a list.
+
+        \code{function(stream)} -->  \code{ list(status,node,stream) }
+
+  From input parameters, an anonymous function is defined. This function admits just one parameter, stream, with type \code{\link[qmrparser]{streamParser}}, and returns a three-field list:
+    \itemize{
+      \item{status}{      
+        
+        "ok" or "fail"} 
+
+      \item{node}{         
+        
+        With \code{action} or \code{error} function output, depending on the case}
+
+      \item{stream}{      
+        
+        With information about the input, after success or failure in recognition}
+      
+    }
+  
+}
+\examples{
+
+# fail
+stream  <- streamParserFromString("123")
+( commentParser("(*","*)")(stream) )[c("status","node")]
+
+# ok 
+stream  <- streamParserFromString("(*123*)")
+( commentParser("(*","*)")(stream) )[c("status","node")]
+
+}
+
+\keyword{token}

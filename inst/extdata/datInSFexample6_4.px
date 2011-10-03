@@ -1,0 +1,32 @@
+CHARSET="ANSI";
+AXIS-VERSION="2000";
+LANGUAGE="fi";
+DECIMALS=0;
+SHOWDECIMALS=0;
+MATRIX="tyti";
+COPYRIGHT=YES;
+SUBJECT-CODE="TYM";
+SUBJECT-AREA="Työmarkkinat";
+DESCRIPTION="T01E Väestö 31.12.2000";
+TITLE="T01E Väestö 31.12.2000 muuttujina Osa-alue,"
+"Ikä ja Pääasiallinen toiminta/ammattiasema.";
+CONTENTS="T01E Väestö 31.12.2000";
+UNITS="Henkilö";
+STUB="Osa-alue","Ikä";
+HEADING="Pääasiallinen toiminta/ammattiasema";
+VALUES("Osa-alue")="049 Espoo","078 Hanko-Hangö","091 Helsinki",
+"092 Vantaa","106 Hyvinkää";
+VALUES("Ikä")="0-6","7-14","30-34";
+VALUES("Pääasiallinen toiminta/ammattiasema")="Työvoima",
+"Työlliset","Palkansaajat";
+CODES("Osa-alue")="049","078","091","092","106";
+DOMAIN("Osa-alue")="OSAL_01 2002";
+INFOFILE="tyti";
+KEYS("Osa-alue")=CODES;
+KEYS("Ikä")=VALUES;
+DATA=
+"049","30-34",16064 15324 14660
+"078","30-34",560 490 470
+"091","30-34",42100 39027 37423
+"092","30-34",13215 12358 11806
+"106","30-34",2646 2423 2270;

@@ -1,0 +1,113 @@
+CHARSET="ANSI";
+AXIS-VERSION="2000";
+LANGUAGE="fi";
+CREATION-DATE="19930401 12:10";
+DECIMALS=0;
+MATRIX="vaerak";
+COPYRIGHT=YES;
+SUBJECT-CODE="VRM";
+SUBJECT-AREA="Väestö";
+DESCRIPTION="Väestö 1990-1992";
+TITLE="Väestö muuttujina siviilisääty, sukupuoli, alue ja aika";
+CONTENTS="Väestö";
+UNITS="henkilöiden lukumäärä";
+STUB="siviilisääty","sukupuoli";
+HEADING="alue","aika";
+VALUES("siviilisääty")="naimisissa","naimaton","eronnut","leski";
+VALUES("sukupuoli")="mies","nainen";
+VALUES("alue")="Koko maa","Helsinki","Espoo";
+VALUES("aika")="1990","1991","1992";
+TIMEVAL("aika")=TLIST(A1),"1990","1991","1992";
+CODES("siviilisääty")="1","2","3","4";
+CODES("sukupuoli")="1","2";
+CODES("alue")="SSS","091","049";
+ELIMINATION("alue")="Koko maa";
+ELIMINATION("sukupuoli")=YES;
+LAST-UPDATED="19950209 13:00";
+SEASADJ=NO;
+CONTACT="Tilastokeskus#PC-Axis-koulutus#fax 09 1734 1234#s-posti pcaxis@stat.fi";
+DATABASE="TKDB";
+SOURCE="Tilastokeskus";
+REFPERIOD="Viiteajankohta on 31. joulukuuta joka vuosi";
+INFOFILE="vaerak";
+NOTE("siviilisääty")="Siviilisääty on riippuvainen väestölaskennan "
+"rekistereistä. Naimisissa olevat yhdessä asuvat merkitään naimisissa "
+"oleviksi. Muut yhdessä asuvat kuuluvat naimattomiin";
+VALUENOTE("alue","Espoo")="Tähän selitystä Espoon datasta#ja selitys "
+"jaetaan näytössä usealle riville.#Tästä alkaakin jo kolmas selitysrivi";
+DATA= 
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+ 
+;
+

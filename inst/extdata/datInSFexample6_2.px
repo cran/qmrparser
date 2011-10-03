@@ -1,0 +1,42 @@
+CHARSET="ANSI";
+AXIS-VERSION="2000";
+LANGUAGE="fi";
+CREATION-DATE="20001212 11:00";
+DECIMALS=0;
+SHOWDECIMALS=0;
+MATRIX="vaerak";
+COPYRIGHT=YES;
+SUBJECT-CODE="VRM";
+SUBJECT-AREA="Väestö";
+DESCRIPTION="Väestö 31.12.2003";
+TITLE="Väestö 31.12.2003 muuttujina Sukupuoli, Kunta ja Siviilisääty";
+CONTENTS="Väestö 31.12.2003";
+UNITS="Henkilöä";
+STUB="Sukupuoli","Kunta";
+HEADING="Siviilisääty";
+VALUES("Sukupuoli")="Sukupuoli yhteensä","Miehet","Naiset";
+VALUES("Kunta")="Espoo","Helsinki","Vantaa";
+VALUES("Siviilisääty")="Siviilisääty yhteensä","Naimaton","Naimisissa";
+CODES("Sukupuoli")="S","1","2";
+CODES("Kunta")="049","091","092";
+CODES("Siviilisääty")="S","1","2";
+LAST-UPDATED="20040319 09:00";
+CONTACT="Tilastokeskus, Väestötilastopalvelu#Postiosoite:"
+"Väestötilastopalvelu, #PL 4A, 00022 Tilastokeskus#Puhelin: (09) 1734 3590"
+"#Faksi: (09) 1734 #3251#Yhteyshenkilö: Nicola Brun#Sähköposti:"
+"#vaestotilasto.palvelu@tilastokeskus.fi#<A HREF=http://tilastokeskus.fi/ "
+"TARGET=_blank>Linkki tilastokeskuksen kotisivulle</A>'";
+SOURCE="Tilastokeskus";
+INFOFILE="vaerak";
+NOTE="Vuodesta 2002 lähtien on siviilisäätytietoihin lisätty rekisteröidyt"
+"parisuhteet...";
+DATA=
+197742 111337 86405
+467623 296100 171523
+158825 91202 67623
+100546 57516 43030
+229903 144564 85339
+80819 47131 33688
+97196 53821 43375
+237720 151536 86184
+78006 44071 33935;
