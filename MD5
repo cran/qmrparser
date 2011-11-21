@@ -1,4 +1,4 @@
-3bd8bc14deaeb40cd48375fbb9c652c5 *DESCRIPTION
+aa8be530686e6875d488a2dd29115bcf *DESCRIPTION
 8b54e5a89fbda3af5e077053d40bec76 *NAMESPACE
 387e77120f9da62399717ebd3afb3a2e *R/alternation.R
 44df5a74af1794c28c1a50756282a5a5 *R/charInSetParser.R
@@ -37,9 +37,9 @@ bff57318eeec5eb5f8551979c42627e4 *R/streamParserNextChar.R
 f0aefae1162d5bef9bacc673c4813cd0 *R/string.R
 551f3fa5500ea79d3d0bd03b845cd8b2 *R/symbolic.R
 bb4f0823d08f971092e4763df46cd2ea *R/whitespace.R
-1f993a2643186bd4844fe59fda080492 *inst/doc/qmrparser-vignette.Rnw
-7fd3b6555d25344d48c340ff3e0aaf49 *inst/doc/qmrparser-vignette.pdf
-82bf079e044bdea6e8498694d116d4a6 *inst/doc/qmrparser.pdf
+9b1ff29164bb5ab2a21a427e8dbf7976 *inst/doc/qmrparser-vignette.Rnw
+6eeedb0d477e908aba6ccfed4feac95b *inst/doc/qmrparser-vignette.pdf
+99ab7e5f3a392cf8c6a8ce52b72a86ff *inst/doc/qmrparser.pdf
 1b2445cda2ac912c4af073e44300f11f *inst/extdata/datInSFexample6_1.px
 52cd7eb29afa09f1737b9b494d5d7610 *inst/extdata/datInSFexample6_2.px
 bfb964f5a8a87eab8c73f3728bfe6f8b *inst/extdata/datInSFexample6_3.px
@@ -47,9 +47,8 @@ bfb964f5a8a87eab8c73f3728bfe6f8b *inst/extdata/datInSFexample6_3.px
 b6b1bb6d4e331befb4d91eee866a1270 *inst/extdata/datInSFexample6_5.px
 910d774a6c1bcb9ea9b69aadbe085058 *inst/extdata/datInSFexampleA_5.px
 5cd3de71d87d84c89a5eaf116c25b384 *inst/extdata/datInTest01.txt
-15764e221ff3a606e8a96bb26ac7993a *inst/noweb/README
-9b1ff29164bb5ab2a21a427e8dbf7976 *inst/noweb/qmrparser-vignette.Rnw
-a4729a0b6a06b3d87e725006e1d0b3a2 *inst/noweb/qmrparser.nw
+7187292051fac33571c4a441bc9f28e5 *inst/noweb/README
+6fae9811706a5ee209a0dec6b9ddb962 *inst/noweb/qmrparser.nw
 5993ccfdf46e8ac2e522526049e3b106 *man/alternation.Rd
 a6a252beac9de9c44aaf7604064b19f4 *man/charInSetParser.Rd
 0595953f9706be6d7ca9834273dd32f0 *man/charParser.Rd
@@ -75,7 +74,7 @@ a820aac7c1f88e6addd819ba112ef898 *man/numberScientific.Rd
 5fad19b558132a8d5f61153e54c3e28d *man/pcAxisCubeMake.Rd
 13bd4a2a31b4494bdc47d9ab5074e4fd *man/pcAxisCubeToCSV.Rd
 96180aa5229e55e16423e665f525eb85 *man/pcAxisParser.Rd
-cc0bff64d84105e1a44d7deb9e6f5d4b *man/qmrparser-package.Rd
+6d171b49ab2e130b641a00a7fbf3ff4e *man/qmrparser-package.Rd
 97a7d1e9ca4cf075e01924a81c1fac6e *man/repetition0N.Rd
 6fd32dfac46118310e4856bffe404cf5 *man/repetition1N.Rd
 7702ae3f4c8a249312dc09d484aef30b *man/separator.Rd
@@ -89,4 +88,4 @@ ff9b466fc32d5a28e8466b11fd0e4f0c *man/whitespace.Rd
 d5c7ebc05a3de3d08f17fb32a33e69a9 *tests/runit/runit.01tokens.R
 12965f90ca2b36c938052dc5e812dc2b *tests/runit/runit.02rules.R
 022fbe4e792eea9c9b1e018768d7f93d *tests/runit/runit.03PCAXIS.R
-5eedfeac3a9ba7ff59ff94e96ae95fc0 *tests/test.RUnit.R
+850737df5e3efe1e3af4a9699603e214 *tests/test.RUnit.R

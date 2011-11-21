@@ -7,7 +7,7 @@ if(require("RUnit", quietly=TRUE)) {
   pkg <- "qmrparser" # <-- Change to package name!
                                         #3
   ## When in developing
-  path <-  file.path(getwd(), "..", "tests", "runit")
+  path <-  file.path(getwd(), "runit")
   if ( file.exists(path) ) {
     ## When in developing, developing environment is prioritised
     .libPaths(c(file.path(getwd(), ".."),.libPaths()))

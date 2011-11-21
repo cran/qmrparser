@@ -129,19 +129,19 @@ Basic functions for building parsers, with an application to PC-AXIS format file
 \subsubsection{Author}
 \lstset{language=}
 <<AUTHOR>>=
-Juan Gea Rosat, Ramon Martínez Coscollà
+Juan Gea Rosat, Ramon Martínez Coscollà 
 @
 
 \subsubsection{Version}
 \lstset{language=}
 <<VERSION>>=
-0.1
+0.1.1
 @
 
 \subsubsection{Date}
 \lstset{language=}
 <<DATE>>=
-2011-10-03
+2011-11-21
 @
 
 \subsubsection{License}
@@ -160,7 +160,7 @@ Type:		Package
 Title:		<<TITLE>>
 Version:	<<VERSION>>
 Date:		<<DATE>>
-Author: 	<<AUTHOR>>
+Author: 	<<AUTHOR>>.
 Maintainer: 	<juangea@geax.net>
 Description:	<<DESCRIPTIONFIELD>>
 License: 	<<LICENSE>>
@@ -2592,7 +2592,7 @@ if(require("RUnit", quietly=TRUE)) {
   pkg <- "<<PACKAGE>>" # <-- Change to package name!
                                         #3
   ## When in developing
-  path <-  file.path(getwd(), "..", "tests", "runit")
+  path <-  file.path(getwd(), "runit")
   if ( file.exists(path) ) {
     ## When in developing, developing environment is prioritised
     .libPaths(c(file.path(getwd(), ".."),.libPaths()))
@@ -4600,8 +4600,7 @@ pkgdoc:	$(INSTDOCDIR)/$(NAMEPKG).pdf \
         $(INSTNWDIR)/README          \
         $(INSTNWDIR)/$(NAMEPKGLP)	
 
-pkgvignette: $(INSTNWDIR)/$(NAMEVIGNETTE).Rnw  \
-             $(INSTDOCDIR)/$(NAMEVIGNETTE).Rnw
+pkgvignette: $(INSTDOCDIR)/$(NAMEVIGNETTE).Rnw
 
   
 INSTALL:
@@ -4645,16 +4644,9 @@ $(INSTNWDIR)/$(NAMEPKGLP): $(NAMEPKGLP) | $(INSTNWDIR)
 	cp $(NAMEPKGLP) $@
 
 
-# VIGNETTE en paquete
-# VIGNETTE PKG noweb
-$(INSTNWDIR)/$(NAMEVIGNETTE).Rnw:  $(NAMEVIGNETTE).Rnw | $(INSTNWDIR)
-	cp $(NAMEVIGNETTE).Rnw  $@
-
 # VIGNETTE PKG doc
-# Do not edit doc document. Edit noweb document.
 $(INSTDOCDIR)/$(NAMEVIGNETTE).Rnw:  $(NAMEVIGNETTE).Rnw | $(INSTDOCDIR)
-	cat <( echo "%do not edit, edit $(NOWEB)/$(NAMEVIGNETTE).Rnw") \
-        $(NAMEVIGNETTE).Rnw | cpif $@
+	cat $(NAMEVIGNETTE).Rnw | cpif $@
 
 # Package creation
 # README

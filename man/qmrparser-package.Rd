@@ -13,15 +13,15 @@ Basic functions for building parsers, with an application to PC-AXIS format file
 \tabular{ll}{
 Package: \tab qmrparser\cr
 Type:    \tab Package\cr
-Version: \tab 0.1\cr
-Date:    \tab 2011-10-03\cr
+Version: \tab 0.1.1\cr
+Date:    \tab 2011-11-21\cr
 License: \tab GPL (>= 3)\cr
 LazyLoad:\tab yes\cr
 }
 Collection of functions to build programs to read complex data files formats, with an application to the case of PC-AXIS format.
 }
 \author{
- Juan Gea Rosat, Ramon Martínez Coscollà
+ Juan Gea Rosat, Ramon Martínez Coscollà 
 
 Maintainer: Juan Gea Rosat <juangea@geax.net>
 }
