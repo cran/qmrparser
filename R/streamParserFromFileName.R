@@ -18,18 +18,16 @@ streamParserFromFileName <- function(fileName,encoding = getOption("encoding")) 
     return( list(
                  streamParserNextChar =  function(stream) {
                    
-                   ## if ( stream$pos != seek(stream$conn) ) seek(stream$conn,stream$pos)                 
-                   if ( stream$pos != .Internal(seek(stream$conn, as.double(NA), 1, 1)) ) .Internal(seek(stream$conn, as.double(stream$pos), 1, 1))
-                   
+                   if ( stream$pos != seek(stream$conn) ) seek(stream$conn,stream$pos)                 
+                                      
                    char <- readChar(stream$conn,nchars=1,useBytes = FALSE)
                    
                    if (length(char) == 0)       
                      list(status="eof",char=""  ,stream=stream) 
                    else {
                      
-                     ## stream$pos    <- seek(stream$conn)           
-                     stream$pos       <-  .Internal(seek(stream$conn, as.double(NA), 1, 1))
-                     
+                     stream$pos    <- seek(stream$conn)           
+                                          
                      if ( char == "\n" ) { 
                        stream$line    <- stream$line + 1
                        stream$linePos <- 0              
@@ -48,9 +46,7 @@ streamParserFromFileName <- function(fileName,encoding = getOption("encoding")) 
                    
                    else {
                      
-                     ## stream$pos       <- seek(stream$conn)
-                     stream$pos       <-  .Internal(seek(stream$conn, as.double(NA), 1, 1))
-                     
+                     stream$pos       <- seek(stream$conn)                                        
                      
                      if ( char == "\n" ) { 
                        stream$line    <- stream$line + 1
