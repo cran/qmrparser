@@ -128,8 +128,12 @@ Value:
       cstream  <- pcAxisParser(stream)
       if ( cstream$status == 'ok' )  cube <- pcAxisCubeMake(cstream)
       #
-      # is caused by files with a non-readable 'encoding'. In the case where it could be read, there may also be problems with string-handling functions, due to multibyte characters. In Windows, according to \code{link{Sys.getlocale}()}, file may be read but accents, ñ, ... may not be correctly recognised.
-
+      # is caused by files with a non-readable 'encoding'.
+      # In the case where it could be read, there may also be problems 
+      # with string-handling functions, due to multibyte characters. 
+      # In Windows, according to \code{link{Sys.getlocale}()},
+      # file may be read but accents, ñ, ... may not be correctly recognised.
+      #
       #
       # There are, at least, the following options:
       #  - File conversion to utf-8, from the OS, with

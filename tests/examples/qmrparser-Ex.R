@@ -3,7 +3,7 @@ source(file.path(R.home("share"), "R", "examples-header.R"))
 options(warn = 1)
 library('qmrparser')
 
-assign(".oldSearch", search(), pos = 'CheckExEnv')
+base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 cleanEx()
 nameEx("alternation")
 ### * alternation
@@ -565,8 +565,12 @@ flush(stderr()); flush(stdout())
 ##D       cstream  <- pcAxisParser(stream)
 ##D       if ( cstream$status == 'ok' )  cube <- pcAxisCubeMake(cstream)
 ##D       #
-##D       # is caused by files with a non-readable 'encoding'. In the case where it could be read, there may also be problems with string-handling functions, due to multibyte characters. In Windows, according to \code{link{Sys.getlocale}()}, file may be read but accents, ñ, ... may not be correctly recognised.
-##D 
+##D       # is caused by files with a non-readable 'encoding'.
+##D       # In the case where it could be read, there may also be problems 
+##D       # with string-handling functions, due to multibyte characters. 
+##D       # In Windows, according to \code{link{Sys.getlocale}()},
+##D       # file may be read but accents, ñ, ... may not be correctly recognised.
+##D       #
 ##D       #
 ##D       # There are, at least, the following options:
 ##D       #  - File conversion to utf-8, from the OS, with
@@ -677,8 +681,12 @@ flush(stderr()); flush(stdout())
 ##D       cstream  <- pcAxisParser(stream)
 ##D       if ( cstream$status == 'ok' )  cube <- pcAxisCubeMake(cstream)
 ##D       #
-##D       # is caused by files with a non-readable 'encoding'. In the case where it could be read, there may also be problems with string-handling functions, due to multibyte characters. In Windows, according to \code{link{Sys.getlocale}()}, file may be read but accents, ñ, ... may not be correctly recognised.
-##D 
+##D       # is caused by files with a non-readable 'encoding'.
+##D       # In the case where it could be read, there may also be problems 
+##D       # with string-handling functions, due to multibyte characters. 
+##D       # In Windows, according to \code{link{Sys.getlocale}()},
+##D       # file may be read but accents, ñ, ... may not be correctly recognised.
+##D       #
 ##D       #
 ##D       # There are, at least, the following options:
 ##D       #  - File conversion to utf-8, from the OS, with
@@ -973,7 +981,8 @@ stream  <- streamParserFromString("")
 
 ### * <FOOTER>
 ###
-cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
+options(digits = 7L)
+base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
 grDevices::dev.off()
 ###
 ### Local variables: ***

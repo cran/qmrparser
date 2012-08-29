@@ -135,7 +135,7 @@ Juan Gea Rosat, Ramon Martínez Coscollà
 \subsubsection{Version}
 \lstset{language=}
 <<VERSION>>=
-0.1.2
+0.1.4
 @
 
 \subsubsection{Date}
@@ -161,7 +161,7 @@ Title:		<<TITLE>>
 Version:	<<VERSION>>
 Date:		<<DATE>>
 Author: 	<<AUTHOR>>.
-Maintainer: 	<juangea@geax.net>
+Maintainer: 	Juan Gea <juangea@geax.net>
 Description:	<<DESCRIPTIONFIELD>>
 License: 	<<LICENSE>>
 Depends: 	R (>= 2.11.1)
@@ -3413,8 +3413,12 @@ On the other hand, there may be some problems with some 'encoding'. This piece o
   cstream  <- pcAxisParser(stream)
   if ( cstream$status == 'ok' )  cube <- pcAxisCubeMake(cstream)
   #
-  # is caused by files with a non-readable 'encoding'. In the case where it could be read, there may also be problems with string-handling functions, due to multibyte characters. In Windows, according to \code{link{Sys.getlocale}()}, file may be read but accents, ñ, ... may not be correctly recognised.
-
+  # is caused by files with a non-readable 'encoding'.
+  # In the case where it could be read, there may also be problems 
+  # with string-handling functions, due to multibyte characters. 
+  # In Windows, according to \code{link{Sys.getlocale}()},
+  # file may be read but accents, ñ, ... may not be correctly recognised.
+  #
   #
   # There are, at least, the following options:
   #  - File conversion to utf-8, from the OS, with
@@ -4440,20 +4444,22 @@ In order to generate package and the pdf file associated to this document:
 
   
 0. Required software
-  noweb. http://www.cs.tufts.edu/~nr/noweb/ http://en.wikipedia.org/wiki/Noweb
-         "notangle" is used and in makefile variable ("MARKUP"), it is identified the "markup" program associated to noweb.
+  noweb   http://www.cs.tufts.edu/~nr/noweb/ http://en.wikipedia.org/wiki/Noweb
+          "notangle" is used and in makefile variable ("MARKUP"), it is identified the "markup" program associated to noweb.
     
-  bash.    http://www.gnu.org/s/bash/  http://en.wikipedia.org/wiki/Bash_%28Unix_shell%29
+  bash.    http://www.gnu.org/s/bash/        http://en.wikipedia.org/wiki/Bash_%28Unix_shell%29
   
-  xelatex  http://www.tug.org/xetex/   http://en.wikipedia.org/wiki/XeTeX
+  xelatex  http://www.tug.org/xetex/         http://en.wikipedia.org/wiki/XeTeX
   
-  ps2pdf   http://pages.cs.wisc.edu/~ghost/ http://en.wikipedia.org/wiki/Ghostscript
+  ps2pdf   http://pages.cs.wisc.edu/~ghost/  http://en.wikipedia.org/wiki/Ghostscript
   
   make     http://www.gnu.org/software/make/ http://en.wikipedia.org/wiki/Make_%28software%29
   
-  sed      http://www.gnu.org/s/sed/   http://en.wikipedia.org/wiki/Sed
+  sed      http://www.gnu.org/s/sed/         http://en.wikipedia.org/wiki/Sed
   
-  awk      http://www.gnu.org/s/gawk/  http://en.wikipedia.org/wiki/Awk
+  awk      http://www.gnu.org/s/gawk/        http://en.wikipedia.org/wiki/Awk
+
+  qpdf     http://qpdf.sourceforge.net/      http://en.wikipedia.org/wiki/QPDF
 
 
 1. Create a working directory and copy these files:
@@ -4518,8 +4524,12 @@ RDIR=$(PKGDIR)/R
 #
 MANDIR=$(PKGDIR)/man
 #
+VIGNETTESDIR=$(PKGDIR)/vignettes
+#
 TESTDIR=$(PKGDIR)/tests
 RUNITDIR=$(PKGDIR)/tests/runit
+#
+EXAMPLESDIR=$(PKGDIR)/tests/examples
 #
 INSTDOCDIR=$(PKGDIR)/inst/doc
 INSTDATDIR=$(PKGDIR)/inst/extdata
@@ -4528,7 +4538,7 @@ NOWEB=noweb
 INSTNWDIR=$(PKGDIR)/inst/$(NOWEB)
 #
 #
-LIBR=-l /usrs/lib/R/x86_64-pc-linux-gnu-library/2.13
+LIBR=-l /opt/R-devel/library
 #
 NAMEPKG=<<PACKAGE>>
 # 
@@ -4595,7 +4605,7 @@ pkgdoc:	$(INSTDOCDIR)/$(NAMEPKG).pdf \
         $(INSTNWDIR)/README          \
         $(INSTNWDIR)/$(NAMEPKGLP)	
 
-pkgvignette: $(INSTDOCDIR)/$(NAMEVIGNETTE).Rnw
+pkgvignette: $(VIGNETTESDIR)/$(NAMEVIGNETTE).Rnw
 
   
 INSTALL:
@@ -4640,7 +4650,7 @@ $(INSTNWDIR)/$(NAMEPKGLP): $(NAMEPKGLP) | $(INSTNWDIR)
 
 
 # VIGNETTE PKG doc
-$(INSTDOCDIR)/$(NAMEVIGNETTE).Rnw:  $(NAMEVIGNETTE).Rnw | $(INSTDOCDIR)
+$(VIGNETTESDIR)/$(NAMEVIGNETTE).Rnw:  $(NAMEVIGNETTE).Rnw | $(VIGNETTESDIR)
 	cat $(NAMEVIGNETTE).Rnw | cpif $@
 
 # Package creation
@@ -4701,18 +4711,21 @@ $(TESTDIR)/%.R: $(NAMEPKGLP) | $(TESTDIR)
 Rules to check and construct package
 <<*>>=
 # checking package source directory
-precheck: $(PKGDIR)
-	R CMD check $(PKGDIR)
+#"Non-standard file/directory found at top level:‘qmrparser-Ex.R’"
+# and move qmrparser-Ex.R EXAMPLESDIR
+precheck: $(PKGDIR) | $(EXAMPLESDIR)
+	R CMD check --as-cran $(PKGDIR)
+	mv $(PKGDIR)/<<PACKAGE>>-Ex.R $(EXAMPLESDIR)
 
 # tar.gz creation
 build:  <<PACKAGE>>_<<VERSION>>.tar.gz
 
 <<PACKAGE>>_<<VERSION>>.tar.gz: $(PKGDIR) precheck
-	R CMD build $(PKGDIR)
+	R CMD build --compact-vignettes=qpdf $(PKGDIR)
 
 # checking tar.gz
 check:  <<PACKAGE>>_<<VERSION>>.tar.gz
-	R CMD check  <<PACKAGE>>_<<VERSION>>.tar.gz
+	R CMD check --as-cran <<PACKAGE>>_<<VERSION>>.tar.gz
 
 @
 
@@ -4729,6 +4742,10 @@ $(RDIR):
 # man directory
 $(MANDIR):
 	mkdir -p $(MANDIR)
+
+# vignettes directory
+$(VIGNETTESDIR):
+	mkdir -p $(VIGNETTESDIR)
 
 # inst/doc directory. In installed package, doc directory (with no inst)
 $(INSTDOCDIR):
@@ -4750,6 +4767,9 @@ $(TESTDIR):
 $(RUNITDIR):
 	mkdir -p $(RUNITDIR)
 
+# tests/examples directory, not present in installed package
+$(EXAMPLESDIR):
+	mkdir -p $(EXAMPLESDIR)
 @
 
 

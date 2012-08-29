@@ -3,20 +3,22 @@ In order to generate package and the pdf file associated to this document:
 
   
 0. Required software
-  noweb. http://www.cs.tufts.edu/~nr/noweb/ http://en.wikipedia.org/wiki/Noweb
-         "notangle" is used and in makefile variable ("MARKUP"), it is identified the "markup" program associated to noweb.
+  noweb   http://www.cs.tufts.edu/~nr/noweb/ http://en.wikipedia.org/wiki/Noweb
+          "notangle" is used and in makefile variable ("MARKUP"), it is identified the "markup" program associated to noweb.
     
-  bash.    http://www.gnu.org/s/bash/  http://en.wikipedia.org/wiki/Bash_%28Unix_shell%29
+  bash.    http://www.gnu.org/s/bash/        http://en.wikipedia.org/wiki/Bash_%28Unix_shell%29
   
-  xelatex  http://www.tug.org/xetex/   http://en.wikipedia.org/wiki/XeTeX
+  xelatex  http://www.tug.org/xetex/         http://en.wikipedia.org/wiki/XeTeX
   
-  ps2pdf   http://pages.cs.wisc.edu/~ghost/ http://en.wikipedia.org/wiki/Ghostscript
+  ps2pdf   http://pages.cs.wisc.edu/~ghost/  http://en.wikipedia.org/wiki/Ghostscript
   
   make     http://www.gnu.org/software/make/ http://en.wikipedia.org/wiki/Make_%28software%29
   
-  sed      http://www.gnu.org/s/sed/   http://en.wikipedia.org/wiki/Sed
+  sed      http://www.gnu.org/s/sed/         http://en.wikipedia.org/wiki/Sed
   
-  awk      http://www.gnu.org/s/gawk/  http://en.wikipedia.org/wiki/Awk
+  awk      http://www.gnu.org/s/gawk/        http://en.wikipedia.org/wiki/Awk
+
+  qpdf     http://qpdf.sourceforge.net/      http://en.wikipedia.org/wiki/QPDF
 
 
 1. Create a working directory and copy these files:
@@ -33,6 +35,6 @@ The following directories are created:
 
 
 Moreover, these files are also created:
- qmrparser_0.1.2.tar.gz         : package file
+ qmrparser_0.1.4.tar.gz         : package file
  qmrparser.pdf                        : pdf version of this document
 
