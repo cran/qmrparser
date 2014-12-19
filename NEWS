@@ -1,0 +1,8 @@
+
+Changes between 0.1.4 and 0.1.5:
+--------------------------------
+
+BUG FIXES
+
+ *  Fix error in commentParser function (thank you Thomas Levine!).
+

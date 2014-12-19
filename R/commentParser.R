@@ -22,6 +22,8 @@ commentParser <- function(beginComment,endComment,
     lenEndComment <- nchar(endComment)
     repeat {    
       ## end comment     
+      init.s       <- s
+      init.cstream <- cstream      
       for( i in 1:lenEndComment ) {
         
         if ( cstream$status == "eof" ) return(list(status="fail",node=error(streamParserPosition(stream)),stream=stream))
@@ -35,8 +37,9 @@ commentParser <- function(beginComment,endComment,
         
         cstream <- streamParserNextCharSeq(cstream$stream)           
       }
-        previo  <- cstream$char
-        cstream <- streamParserNextCharSeq(cstream$stream)     
+        previo  <- init.cstream$char
+        s       <- c(init.s,previo)        
+        cstream <- streamParserNextCharSeq(init.cstream$stream)         
       
     }
 

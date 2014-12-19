@@ -111,6 +111,14 @@ test.tokens01 <- function() {
   checkTokenParserOk  ("\\* sdas \\*" ,commentParser("\\*","\\*"), "commentParser")
   checkTokenParserOk  ("\\* \\\\* \\*",commentParser("\\*","\\*"), "commentParser")
 
+
+  checkTokenParserOk  ("/** **/",commentParser("/*", "*/"), "commentParser")
+  checkTokenParserOk  ("/****/" ,commentParser("/*", "*/"), "commentParser")
+  checkTokenParserOk  ("/** */" ,commentParser("/*", "*/"), "commentParser")
+  checkTokenParserOk  ("/***/"  ,commentParser("/*", "*/"), "commentParser")
+  checkTokenParserOk  ("/* \\*/ */"  ,commentParser("/*", "*/"), "commentParser")
+  checkTokenParserOk  ("/* *\\/ */"  ,commentParser("/*", "*/"), "commentParser")
+
   checkTokenParserFail("(*"           ,commentParser("(*","*)"), "commentParser")
   checkTokenParserFail("(* "          ,commentParser("(*","*)"), "commentParser")
   checkTokenParserFail("( * *)"       ,commentParser("(*","*)"), "commentParser")

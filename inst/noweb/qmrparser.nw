@@ -135,13 +135,13 @@ Juan Gea Rosat, Ramon Martínez Coscollà
 \subsubsection{Version}
 \lstset{language=}
 <<VERSION>>=
-0.1.4
+0.1.5
 @
 
 \subsubsection{Date}
 \lstset{language=}
 <<DATE>>=
-2012-08-29
+2014-12-19
 @
 
 \subsubsection{License}
@@ -232,6 +232,21 @@ Source code used in literate programming can be found in folder 'noweb'.
 exportPattern("^[[:alpha:]]+")
 @
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{NEWS}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lstset{language=}
+<<NEWS>>=
+
+Changes between 0.1.4 and 0.1.5:
+--------------------------------
+
+BUG FIXES
+
+ *  Fix error in commentParser function (thank you Thomas Levine!).
+
+@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2017,6 +2032,8 @@ commentParser <- function(beginComment,endComment,
     lenEndComment <- nchar(endComment)
     repeat {    
       ## end comment     
+      init.s       <- s
+      init.cstream <- cstream      
       for( i in 1:lenEndComment ) {
         
         if ( cstream$status == "eof" ) return(list(status="fail",node=error(streamParserPosition(stream)),stream=stream))
@@ -2030,8 +2047,9 @@ commentParser <- function(beginComment,endComment,
         
         cstream <- streamParserNextCharSeq(cstream$stream)           
       }
-        previo  <- cstream$char
-        cstream <- streamParserNextCharSeq(cstream$stream)     
+        previo  <- init.cstream$char
+        s       <- c(init.s,previo)        
+        cstream <- streamParserNextCharSeq(init.cstream$stream)         
       
     }
 
@@ -2055,6 +2073,14 @@ checkTokenParserOk  ("/*  \\*/  */" ,commentParser("/*","*/"), "commentParser")
 checkTokenParserOk  ("\\*\\*"       ,commentParser("\\*","\\*"), "commentParser")
 checkTokenParserOk  ("\\* sdas \\*" ,commentParser("\\*","\\*"), "commentParser")
 checkTokenParserOk  ("\\* \\\\* \\*",commentParser("\\*","\\*"), "commentParser")
+
+
+checkTokenParserOk  ("/** **/",commentParser("/*", "*/"), "commentParser")
+checkTokenParserOk  ("/****/" ,commentParser("/*", "*/"), "commentParser")
+checkTokenParserOk  ("/** */" ,commentParser("/*", "*/"), "commentParser")
+checkTokenParserOk  ("/***/"  ,commentParser("/*", "*/"), "commentParser")
+checkTokenParserOk  ("/* \\*/ */"  ,commentParser("/*", "*/"), "commentParser")
+checkTokenParserOk  ("/* *\\/ */"  ,commentParser("/*", "*/"), "commentParser")
 
 checkTokenParserFail("(*"           ,commentParser("(*","*)"), "commentParser")
 checkTokenParserFail("(* "          ,commentParser("(*","*)"), "commentParser")
@@ -4598,7 +4624,8 @@ pkg:	$(RFUN:%=$(RDIR)/%.R)  		\
 	$(DUNI:%=$(INSTDATDIR)/%) 	\
 	$(PKGDIR)/DESCRIPTION    	\
 	$(PKGDIR)/NAMESPACE             \
-        pkgdoc	                        \
+	$(PKGDIR)/NEWS			\
+	pkgdoc	                        \
         pkgvignette
 
 pkgdoc:	$(INSTDOCDIR)/$(NAMEPKG).pdf \
@@ -4667,6 +4694,10 @@ $(PKGDIR)/DESCRIPTION: $(NAMEPKGLP) | $(PKGDIR)
 $(PKGDIR)/NAMESPACE: $(NAMEPKGLP)   | $(PKGDIR)
 	notangle -R`basename $@` $(NAMEPKGLP) | cpif $@
 
+# NEWS PKG
+$(PKGDIR)/NEWS:	$(NAMEPKGLP) | $(PKGDIR)
+	notangle -R`basename $@` $(NAMEPKGLP) | cpif $@
+	
 # R PKG
 $(RDIR)/%.R: $(NAMEPKGLP) | $(RDIR)
 	cat <( echo "#do not edit, edit $(NOWEB)/$(NAMEPKGLP)") \
