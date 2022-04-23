@@ -37,6 +37,7 @@ NULL
     
     pcAxisCubeToCSV(prefix="datInSFexample6_1",pcAxisCube=cube)     
 
+    unlink("datInSFexample6_1*.csv")
   }
 }
 \keyword{PC-AXIS}

@@ -41,7 +41,10 @@ language=}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-The aim of this package is to provide a collection of functions which allow easily programming of parsers, for not so common data files formats. To achieve this objective it is enough to have a very basic collection of functions. As the first practical applications, recognition of PC-AXIS format is implemented.
+The aim of this package is to provide a collection of functions which allow easily
+programming of parsers, for not so common data files formats. To achieve this objective
+it is enough to have a very basic collection of functions. As the first practical
+applications, recognition of PC-AXIS format is implemented.
 
 Theoretical references about grammars, parsers, parser combinator can be found in:
 
@@ -50,27 +53,27 @@ Theoretical references about grammars, parsers, parser combinator can be found i
 \item
 Context-free grammar.
 
-\url{http://en.wikipedia.org/wiki/Context-free_grammar}
+\url{https://en.wikipedia.org/wiki/Context-free_grammar}
 
 \item
 Backus–Naur Form.
 
-\url{http://en.wikipedia.org/wiki/Backus%E2%80%93Naur_Form}
+\url{https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_Form}
 
 \item
 Extended Backus–Naur Form
 
-\url{http://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form}
+\url{https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form}
 
 \item
 Parser combinator  
 
-\url{http://en.wikipedia.org/wiki/Parser_combinator}
+\url{https://en.wikipedia.org/wiki/Parser_combinator}
 
 \item
 Parsing  
 
-\url{http://en.wikipedia.org/wiki/List_of_algorithms#Parsing}
+\url{https://en.wikipedia.org/wiki/List_of_algorithms#Parsing}
  
 \end{itemize}
 
@@ -80,12 +83,12 @@ and references about PC-AXIS:
 \item
 PC-Axis file format
 
-\url{http://www.scb.se/Pages/List____314011.aspx}
+\url{https://www.scb.se/en/services/statistical-programs-for-px-files/px-file-format/}
 
 \item 
 PC-Axis file format manual. Statistics of Finland.
 
-\url{http://tilastokeskus.fi/tup/pcaxis/tiedostomuoto2006_laaja_en.pdf}
+\url{https://tilastokeskus.fi/tup/pcaxis/tiedostomuoto2006_laaja_en.pdf}
  
 \end{itemize}
 
@@ -117,7 +120,7 @@ Extension cannot be tex since a latex file is generated with this name
 \subsubsection{Package title}
 \lstset{language=}
 <<TITLE>>=
-Parser combinator in R
+Parser Combinator in R
 @
 
 \subsubsection{Description}
@@ -135,13 +138,13 @@ Juan Gea Rosat, Ramon Martínez Coscollà
 \subsubsection{Version}
 \lstset{language=}
 <<VERSION>>=
-0.1.5
+0.1.6
 @
 
 \subsubsection{Date}
 \lstset{language=}
 <<DATE>>=
-2014-12-19
+2022-04-10
 @
 
 \subsubsection{License}
@@ -164,7 +167,7 @@ Author: 	<<AUTHOR>>.
 Maintainer: 	Juan Gea <juangea@geax.net>
 Description:	<<DESCRIPTIONFIELD>>
 License: 	<<LICENSE>>
-Depends: 	R (>= 2.11.1)
+Depends: 	R (>= 3.4.0)
 Suggests:	RUnit
 LazyLoad: 	yes
 Encoding: 	UTF-8
@@ -204,13 +207,13 @@ Maintainer: Juan Gea Rosat <juangea@geax.net>
 \references{
 
 Parser combinator. 
-\url{http://en.wikipedia.org/wiki/Parser_combinator}
+\url{https://en.wikipedia.org/wiki/Parser_combinator}
 
 Context-free grammar.
-\url{http://en.wikipedia.org/wiki/Context-free_grammar}    
+\url{https://en.wikipedia.org/wiki/Context-free_grammar}    
 
 PC-Axis file format.
-\url{http://www.scb.se/Pages/List____314011.aspx}
+\url{https://www.scb.se/en/services/statistical-programs-for-px-files/px-file-format/}
 
 Type \code{RShowDoc("index",package="<<PACKAGE>>")} at the R command line to open the package vignette.
 
@@ -230,6 +233,8 @@ Source code used in literate programming can be found in folder 'noweb'.
 \lstset{language=R}
 <<NAMESPACE>>=
 exportPattern("^[[:alpha:]]+")
+importFrom("stats", "aggregate")
+importFrom("utils", "write.csv")
 @
 
 
@@ -245,6 +250,20 @@ Changes between 0.1.4 and 0.1.5:
 BUG FIXES
 
  *  Fix error in commentParser function (thank you Thomas Levine!).
+
+ 
+Changes between 0.1.5 and 0.1.6:
+--------------------------------
+
+INSTALLATION 
+ 
+ *  Correction of problems detected in the quality control of the packages
+
+
+BUG FIXES
+
+ *  Removal of trailing blank from some filenames in pcAxisCubeToCSV function
+
 
 @
 
@@ -2600,7 +2619,7 @@ checkSentParserFail  <- function(text,parse,type,sent=text,msg=paste(type,": [",
 
 This function aim is to cause unitary tests to be executed with R CMD check.
 
-The function is a slightly modified version of the one in: unit testing in R. \url{http://rwiki.sciviews.org/doku.php?id=developers:runit}
+The function is a slightly modified version of the one in: unit testing in R. \url{https://rwiki.sciviews.org/doku.php?id=developers:runit}
 
 \lstset{language=R}
 <<test.RUnit.tstR>>=
@@ -3374,7 +3393,7 @@ actionString <- function(s) paste("'",s,"'",collapse="",sep="")
 
 Notes extracted from 'PC-Axis file format manual. Statistics of Finland.'
 
-\url{http://tilastokeskus.fi/tup/pcaxis/tiedostomuoto2006_laaja_en.pdf} 
+\url{https://tilastokeskus.fi/tup/pcaxis/tiedostomuoto2006_laaja_en.pdf} 
 
 The kind of sentences that may contain a file are:
 
@@ -3434,7 +3453,7 @@ On the other hand, there may be some problems with some 'encoding'. This piece o
   #                " input string ...  is invalid in this locale"
   #
   # For example, in Linux the error generated by this code:
-   name     <-     "http://www.ine.es/pcaxisdl//t20/e245/p04/a2009/l0/00000008.px" 
+   name     <-     "https://www.ine.es/pcaxisdl//t20/e245/p04/a2009/l0/00000008.px" 
   stream   <- streamParserFromString( readLines( name ) )    
   cstream  <- pcAxisParser(stream)
   if ( cstream$status == 'ok' )  cube <- pcAxisCubeMake(cstream)
@@ -3451,12 +3470,13 @@ On the other hand, there may be some problems with some 'encoding'. This piece o
   # "iconv - Convert encoding of given files from one encoding to another"
   #
   #  - File conversion in R:
-  name    <- "http://www.ine.es/pcaxisdl//t20/e245/p04/a2009/l0/00000008.px" 
+  name    <- "https://www.ine.es/pcaxisdl//t20/e245/p04/a2009/l0/00000008.px" 
   stream   <- streamParserFromString( iconv( readLines( name ), "IBM850", "UTF-8") )
   cstream  <- pcAxisParser(stream)
   if ( cstream$status == 'ok' )  cube <- pcAxisCubeMake(cstream)
   #
-  # In the latter case, latin1 would also work, but accents, ñ, ... would not be correctly read.
+  # In the latter case, latin1 would also work, but accents, ñ, ... would not be
+  # correctly read.
   #
   #  - Making the assumption that the file does not contain multibyte characters:
   #
@@ -3464,7 +3484,7 @@ On the other hand, there may be some problems with some 'encoding'. This piece o
   Sys.setlocale(category = "LC_CTYPE", locale = "C")
   #
   name     <-
-    "http://www.ine.es/pcaxisdl//t20/e245/p04/a2009/l0/00000008.px" 
+    "https://www.ine.es/pcaxisdl//t20/e245/p04/a2009/l0/00000008.px" 
   stream   <- streamParserFromString( readLines( name ) )
   cstream  <- pcAxisParser(stream)
   if ( cstream$status == 'ok' )  cube <- pcAxisCubeMake(cstream)
@@ -3610,12 +3630,12 @@ Returns a list with "status" "node"   "stream":
   
 PC-Axis file format. 
 
-\url{http://www.scb.se/Pages/List____314011.aspx}
+\url{https://www.scb.se/en/services/statistical-programs-for-px-files/px-file-format/}
 
 
 PC-Axis file format manual. Statistics of Finland.
 
-\url{http://tilastokeskus.fi/tup/pcaxis/tiedostomuoto2006_laaja_en.pdf} 
+\url{https://tilastokeskus.fi/tup/pcaxis/tiedostomuoto2006_laaja_en.pdf} 
   
 } 
 
@@ -3923,7 +3943,7 @@ checkEquals("ok",pcAxisParser(streamParserFromString('DATA=
 \subsection{Notes}
 Notes extracted from 'PC-Axis file format manual. Statistics of Finland.'
 
-\url{http://tilastokeskus.fi/tup/pcaxis/tiedostomuoto2006_laaja_en.pdf} 
+\url{https://tilastokeskus.fi/tup/pcaxis/tiedostomuoto2006_laaja_en.pdf} 
 
 Here, the meaning of the most relevant metadata keywords in a PC-AXIS cube is outlined.
 In order to extract numerical data, keywords STUB, HEADING, VALUES, CODES are relevant.
@@ -4097,12 +4117,12 @@ Value:
   
   PC-Axis file format. 
   
-  \url{http://www.scb.se/Pages/List____314011.aspx}
+  \url{https://www.scb.se/en/services/statistical-programs-for-px-files/px-file-format/}
  
   
   PC-Axis file format manual. Statistics of Finland.
   
-  \url{http://tilastokeskus.fi/tup/pcaxis/tiedostomuoto2006_laaja_en.pdf} 
+  \url{https://tilastokeskus.fi/tup/pcaxis/tiedostomuoto2006_laaja_en.pdf} 
   
 } 
 
@@ -4356,6 +4376,7 @@ NULL
     
     pcAxisCubeToCSV(prefix="datInSFexample6_1",pcAxisCube=cube)     
 
+    unlink("datInSFexample6_1*.csv")
   }
 }
 \keyword{PC-AXIS}
@@ -4372,10 +4393,10 @@ pcAxisCubeToCSV <- function(prefix,pcAxisCube) {
   
   write.csv(pcAxisCube$pxCubeVariableDomain, file = paste(prefix,"pxCubeVariableDomain.csv",sep=""),row.names = FALSE)
   
-  write.csv(pcAxisCube$pxCubeData          , file = paste(prefix,"pxCubeData.csv          ",sep=""),row.names = FALSE)
+  write.csv(pcAxisCube$pxCubeData          , file = paste(prefix,"pxCubeData.csv",sep=""),row.names = FALSE)
 
   for( name in names(pcAxisCube$pxCubeAttrN) )
-    write.csv(pcAxisCube$pxCubeAttrN[[name]], file = paste(prefix,"pxCube",name,".csv ",sep=""),row.names = FALSE) 	
+    write.csv(pcAxisCube$pxCubeAttrN[[name]], file = paste(prefix,"pxCube",name,".csv",sep=""),row.names = FALSE) 	
 }
 @
 
@@ -4470,22 +4491,22 @@ In order to generate package and the pdf file associated to this document:
 
   
 0. Required software
-  noweb   http://www.cs.tufts.edu/~nr/noweb/ http://en.wikipedia.org/wiki/Noweb
+  noweb   https://www.cs.tufts.edu/~nr/noweb/ https://en.wikipedia.org/wiki/Noweb
           "notangle" is used and in makefile variable ("MARKUP"), it is identified the "markup" program associated to noweb.
     
-  bash.    http://www.gnu.org/s/bash/        http://en.wikipedia.org/wiki/Bash_%28Unix_shell%29
+  bash.    https://www.gnu.org/s/bash/        https://en.wikipedia.org/wiki/Bash_%28Unix_shell%29
   
-  xelatex  http://www.tug.org/xetex/         http://en.wikipedia.org/wiki/XeTeX
+  xelatex  https://www.tug.org/xetex/         https://en.wikipedia.org/wiki/XeTeX
   
-  ps2pdf   http://pages.cs.wisc.edu/~ghost/  http://en.wikipedia.org/wiki/Ghostscript
+  ps2pdf   https://pages.cs.wisc.edu/~ghost/  https://en.wikipedia.org/wiki/Ghostscript
   
-  make     http://www.gnu.org/software/make/ http://en.wikipedia.org/wiki/Make_%28software%29
+  make     https://www.gnu.org/software/make/ https://en.wikipedia.org/wiki/Make_%28software%29
   
-  sed      http://www.gnu.org/s/sed/         http://en.wikipedia.org/wiki/Sed
+  sed      https://www.gnu.org/s/sed/         https://en.wikipedia.org/wiki/Sed
   
-  awk      http://www.gnu.org/s/gawk/        http://en.wikipedia.org/wiki/Awk
+  awk      https://www.gnu.org/s/gawk/        https://en.wikipedia.org/wiki/Awk
 
-  qpdf     http://qpdf.sourceforge.net/      http://en.wikipedia.org/wiki/QPDF
+  qpdf     https://qpdf.sourceforge.net/      https://en.wikipedia.org/wiki/QPDF
 
 
 1. Create a working directory and copy these files:
@@ -4557,7 +4578,6 @@ RUNITDIR=$(PKGDIR)/tests/runit
 #
 EXAMPLESDIR=$(PKGDIR)/tests/examples
 #
-INSTDOCDIR=$(PKGDIR)/inst/doc
 INSTDATDIR=$(PKGDIR)/inst/extdata
 #
 NOWEB=noweb
@@ -4569,8 +4589,10 @@ LIBR=-l /opt/R-devel/library
 NAMEPKG=<<PACKAGE>>
 # 
 NAMEPKGLP=<<NAMEPKGLP>>
-#
 NAMEVIGNETTE=<<PACKAGE>>-vignette
+#
+NAMENOWEB=<<PACKAGE>>_nw
+NAMENOWEBPDF=<<PACKAGE>>_nw.pdf
 #
 @
 
@@ -4608,7 +4630,7 @@ Objectives available when executing make.
 <<*>>=
 all:	  pkgcheck
 
-doc:      $(NAMEPKG).pdf
+doc:      $(NAMENOWEBPDF)
 
 pkgcheck: pkgbuild check
 
@@ -4628,7 +4650,7 @@ pkg:	$(RFUN:%=$(RDIR)/%.R)  		\
 	pkgdoc	                        \
         pkgvignette
 
-pkgdoc:	$(INSTDOCDIR)/$(NAMEPKG).pdf \
+pkgdoc:	$(INSTNWDIR)/$(NAMENOWEBPDF) \
         $(INSTNWDIR)/README          \
         $(INSTNWDIR)/$(NAMEPKGLP)	
 
@@ -4643,16 +4665,17 @@ REMOVE:
 
 # literate documentation
 # installation pdf in package
-$(INSTDOCDIR)/$(NAMEPKG).pdf:	$(NAMEPKG).pdf | $(INSTDOCDIR)
-	cp  $(NAMEPKG).pdf $(INSTDOCDIR)/$(NAMEPKG).pdf
+$(INSTNWDIR)/$(NAMENOWEBPDF):	$(NAMENOWEBPDF) | $(INSTNWDIR)
+	cp  $(NAMENOWEBPDF)    $(INSTNWDIR)/$(NAMENOWEBPDF)
 
 # literate documentation
 # pdf generation
-$(NAMEPKG).pdf:	$(NAMEPKG).tex 
-	xelatex $(NAMEPKG).tex
-	xelatex $(NAMEPKG).tex
-	ps2pdf  -dAutoRotatePages=/None $(NAMEPKG).pdf
-	mv  qmrparser.pdf.pdf  qmrparser.pdf 
+$(NAMENOWEBPDF):	$(NAMEPKG).tex    
+	mv      $(NAMEPKG).tex  $(NAMENOWEB).tex
+	xelatex $(NAMENOWEB).tex
+	xelatex $(NAMENOWEB).tex
+	ps2pdf  -dAutoRotatePages=/None $(NAMENOWEB).pdf
+	mv  $(NAMENOWEB).pdf.pdf  $(NAMENOWEBPDF)
 
 # literate documentation
 # tex generation
@@ -4745,8 +4768,8 @@ Rules to check and construct package
 #"Non-standard file/directory found at top level:‘qmrparser-Ex.R’"
 # and move qmrparser-Ex.R EXAMPLESDIR
 precheck: $(PKGDIR) | $(EXAMPLESDIR)
-	R CMD check --as-cran $(PKGDIR)
-	mv $(PKGDIR)/<<PACKAGE>>-Ex.R $(EXAMPLESDIR)
+	R CMD check --as-cran --check-subdirs=yes $(PKGDIR)
+#	mv $(PKGDIR)/<<PACKAGE>>-Ex.R $(EXAMPLESDIR)
 
 # tar.gz creation
 build:  <<PACKAGE>>_<<VERSION>>.tar.gz
@@ -4777,10 +4800,6 @@ $(MANDIR):
 # vignettes directory
 $(VIGNETTESDIR):
 	mkdir -p $(VIGNETTESDIR)
-
-# inst/doc directory. In installed package, doc directory (with no inst)
-$(INSTDOCDIR):
-	mkdir -p $(INSTDOCDIR)
           
 # inst/extdata directory. In installed package, extdata directory (with no inst)
 $(INSTDATDIR):
@@ -4852,7 +4871,7 @@ Test files obtained:
 
 PC-Axis file format manual. Statistics of Finland.
 
-\url{http://tilastokeskus.fi/tup/pcaxis/tiedostomuoto2006_laaja_en.pdf}
+\url{https://tilastokeskus.fi/tup/pcaxis/tiedostomuoto2006_laaja_en.pdf}
 
 
 \subsection{datInSFexample6\_1.px}
@@ -5282,9 +5301,9 @@ DATA=
 \section{Literate programming}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Package has been developed using literate programming (\url{http://en.wikipedia.org/wiki/Literate_programming}) and noweb programm (\url{http://www.cs.tufts.edu/~nr/noweb/} and \url{http://en.wikipedia.org/wiki/Noweb}).
+Package has been developed using literate programming (\url{https://en.wikipedia.org/wiki/Literate_programming}) and noweb programm (\url{https://www.cs.tufts.edu/~nr/noweb/} and \url{https://en.wikipedia.org/wiki/Noweb}).
 
-In order to format in a nice way code coming from different languages (R, Rd, make, etc.), listing latex package has been used (\url{http://www.ctan.org/tex-archive/macros/latex/contrib/listings/} and  \url{http://en.wikibooks.org/wiki/LaTeX/Packages/Listings}). Therefore, totex noweb program must be slightly modified (modification is included next).
+In order to format in a nice way code coming from different languages (R, Rd, make, etc.), listing latex package has been used (\url{https://www.ctan.org/tex-archive/macros/latex/contrib/listings/} and  \url{https://en.wikibooks.org/wiki/LaTeX/Packages/Listings}). Therefore, totex noweb program must be slightly modified (modification is included next).
 
 Listing package solves 'Overfull \\hbox' massive problem, allowing carriage return control control.
 

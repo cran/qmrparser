@@ -4,7 +4,7 @@
 \alias{qmrparser}
 \docType{package}
 \title{
-Parser combinator in R
+Parser Combinator in R
 }
 \description{
 Basic functions for building parsers, with an application to PC-AXIS format files.
@@ -13,8 +13,8 @@ Basic functions for building parsers, with an application to PC-AXIS format file
 \tabular{ll}{
 Package: \tab qmrparser\cr
 Type:    \tab Package\cr
-Version: \tab 0.1.5\cr
-Date:    \tab 2014-12-19\cr
+Version: \tab 0.1.6\cr
+Date:    \tab 2022-04-10\cr
 License: \tab GPL (>= 3)\cr
 LazyLoad:\tab yes\cr
 }
@@ -28,13 +28,13 @@ Maintainer: Juan Gea Rosat <juangea@geax.net>
 \references{
 
 Parser combinator. 
-\url{http://en.wikipedia.org/wiki/Parser_combinator}
+\url{https://en.wikipedia.org/wiki/Parser_combinator}
 
 Context-free grammar.
-\url{http://en.wikipedia.org/wiki/Context-free_grammar}    
+\url{https://en.wikipedia.org/wiki/Context-free_grammar}    
 
 PC-Axis file format.
-\url{http://www.scb.se/Pages/List____314011.aspx}
+\url{https://www.scb.se/en/services/statistical-programs-for-px-files/px-file-format/}
 
 Type \code{RShowDoc("index",package="qmrparser")} at the R command line to open the package vignette.
 

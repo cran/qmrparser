@@ -6,3 +6,17 @@ BUG FIXES
 
  *  Fix error in commentParser function (thank you Thomas Levine!).
 
+ 
+Changes between 0.1.5 and 0.1.6:
+--------------------------------
+
+INSTALLATION 
+ 
+ *  Correction of problems detected in the quality control of the packages
+
+
+BUG FIXES
+
+ *  Removal of trailing blank from some filenames in pcAxisCubeToCSV function
+
+
